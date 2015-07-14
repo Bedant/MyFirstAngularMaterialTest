@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Material test</title>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css" class="css"/>
+</head>
+<body ng-app="MyApp" ng-controller="ListController" layout="column" layout-align="top-center">
+
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span class="md-flex">MyApp</span>
+    </div>
+</md-toolbar>
+
+<md-content layout ="column" layout-align="center-center">
+    <div class ="app-content">
+        <form ng-submit="search()">
+
+            <div ng-show="!isSearching">
+                <md-input-container class="long">
+                    <label>Search For</label>
+                    <input type="text" ng-model="searchTerm" required md-maxlength="20">
+                </md-input-container>
+            </div>
+            <md-progress-circular ng-if="isSearching" md-theme="blue" md-mode="indeterminate"></md-progress-circular>
+        </form>
+
+        <md-card ng-repeat="picture in results.photos.photo">
+            <img ng-src="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_b.jpg" alt="" class="md-card-image">
+            <h3>{{picture.title}}</h3>
+            <md-button>Tap Me</md-button>
+        </md-card>
+    </div>
+
+    <md-button class="md-fab" aria-label="FAB">
+        <md-icon md-svg-src="your/icon.svg"></md-icon>
+    </md-button>
+</md-content>
+
+
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/hammerjs/hammer.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
